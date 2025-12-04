@@ -1,61 +1,55 @@
-// src/components/Sidebar.jsx
-import { useState } from "react";
-
-const items = [
-  { id: 1, label: "Home", icon: "🏠" },
-  { id: 2, label: "Explore", icon: "🔎" },
-  { id: 3, label: "Subscriptions", icon: "📺" },
-  { id: 4, label: "Library", icon: "📚" },
-  { id: 5, label: "History", icon: "🕘" },
-];
+import React from "react";
+import {
+  FaHome,
+  FaBolt,
+  FaYoutube,
+  FaHistory,
+  FaFire,
+  FaShoppingBag,
+  FaMusic,
+  FaFilm,
+  FaBroadcastTower,
+  FaGamepad,
+  FaNewspaper,
+} from "react-icons/fa";
 
 export default function Sidebar() {
-  const [open, setOpen] = useState(true);
-
   return (
-    // wrapper: fixed on left with height full
-    <aside
-      className={`bg-white border-r h-screen sticky top-0 transition-all duration-200 ${
-        open ? "w-64" : "w-16"
+    <div className="w-60 h-screen overflow-y-auto border-r bg-white p-4 fixed top-16">
+      
+      {/* MAIN MENU */}
+      <div className="mb-6">
+        <SidebarItem icon={<FaHome />} label="Home" active />
+        <SidebarItem icon={<FaBolt />} label="Shorts" />
+        <SidebarItem icon={<FaYoutube />} label="Subscriptions" />
+        <SidebarItem icon={<FaHistory />} label="History" />
+      </div>
+
+      <hr className="my-4" />
+
+      {/* EXPLORE SECTION */}
+      <h3 className="text-gray-600 font-semibold mb-2">Explore</h3>
+      <SidebarItem icon={<FaFire />} label="Trending" />
+      <SidebarItem icon={<FaShoppingBag />} label="Shopping" />
+      <SidebarItem icon={<FaMusic />} label="Music" />
+      <SidebarItem icon={<FaFilm />} label="Movies" />
+      <SidebarItem icon={<FaBroadcastTower />} label="Live" />
+      <SidebarItem icon={<FaGamepad />} label="Gaming" />
+      <SidebarItem icon={<FaNewspaper />} label="News" />
+    </div>
+  );
+}
+
+// REUSABLE SIDEBAR ITEM COMPONENT
+function SidebarItem({ icon, label, active }) {
+  return (
+    <div
+      className={`flex items-center gap-4 p-2 rounded-lg cursor-pointer hover:bg-gray-200 ${
+        active ? "bg-gray-200 font-semibold" : ""
       }`}
     >
-      {/* toggle */}
-      <div className="flex items-center justify-between px-3 py-3 border-b">
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => setOpen(!open)}
-            className="text-xl p-1 rounded hover:bg-gray-100"
-          >
-            ☰
-          </button>
-          {open && <span className="font-semibold">Menu</span>}
-        </div>
-      </div>
-
-      {/* items */}
-      <nav className="mt-2">
-        {items.map((it) => (
-          <div
-            key={it.id}
-            className="flex items-center gap-3 px-3 py-3 hover:bg-gray-100 cursor-pointer"
-          >
-            <div className="text-lg w-6 text-center">{it.icon}</div>
-            {/* label hides when collapsed */}
-            <div className={`overflow-hidden transition-all ${open ? "w-auto opacity-100" : "w-0 opacity-0"}`}>
-              <span className="whitespace-nowrap">{it.label}</span>
-            </div>
-          </div>
-        ))}
-      </nav>
-
-      {/* spacer */}
-      <div className="mt-auto p-3">
-        {open ? (
-          <div className="text-sm text-gray-600">Made with ❤️</div>
-        ) : (
-          <div className="text-center text-xs text-gray-400"> </div>
-        )}
-      </div>
-    </aside>
+      <span className="text-xl">{icon}</span>
+      <span>{label}</span>
+    </div>
   );
 }
