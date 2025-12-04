@@ -1,34 +1,21 @@
+// src/components/VideoCard.jsx
 import React from "react";
+import { Link } from "react-router-dom";
 
-export default function VideoCard({ thumbnail, title, channel, views, time, avatar }) {
+// video: object, id: index used in link
+export default function VideoCard({ video, id }) {
+  if (!video) {
+    // Prevent crash when an item is missing
+    return <div className="p-4 text-red-600">Missing video</div>;
+  }
+
   return (
-    <div className="cursor-pointer transition hover:scale-105">
-      
-      <img
-        src={thumbnail}
-        alt="thumbnail"
-        className="w-full rounded-xl object-cover aspect-video hover:opacity-90 transition"
-        onError={(e) => {
-          e.target.src = "https://i.ytimg.com/img/no_thumbnail.jpg";
-        }}
-      />
-
-      <div className="flex mt-3 gap-3">
-        <img
-          src={avatar}
-          alt="channel avatar"
-          className="w-10 h-10 rounded-full"
-        />
-
-        <div>
-          <h3 className="font-semibold text-sm leading-tight">{title}</h3>
-          <p className="text-gray-600 text-sm">{channel}</p>
-          <p className="text-gray-500 text-sm">
-            {views} views · {time}
-          </p>
-        </div>
+    <Link to={`/video/${id}`}>
+      <div className="cursor-pointer">
+        <img src={video.thumbnail} alt={video.title} className="w-full h-44 object-cover rounded-lg" />
+        <h4 className="mt-2 font-semibold">{video.title}</h4>
+        <p className="text-xs text-gray-500">{video.channel} • {video.views}</p>
       </div>
-
-    </div>
+    </Link>
   );
 }

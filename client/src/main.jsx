@@ -1,10 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+// main.jsx
+// This is the FIRST file that runs when the app starts.
+// We put BrowserRouter here so the whole app uses routing from one place.
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import { BrowserRouter } from "react-router-dom";
+import "./App.css"; // your global css (Tailwind / App styles)
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  // Put BrowserRouter here only — do not place another BrowserRouter inside App.jsx
+  <BrowserRouter>
     <App />
-  </StrictMode>,
-)
+  </BrowserRouter>
+);

@@ -1,36 +1,29 @@
-import Header from "./components/Header";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
-import VideoCard from "./components/VideoCard";
-import { videos } from "./data/videos";
+import Header from "./components/Header";
+
+import HomePage from "./pages/HomePage";
+import VideoPage from "./pages/VideoPage";
 
 export default function App() {
   return (
-    <div>
-      <Header />
+    <div className="flex">
+      
+      {/* LEFT SIDE MENU */}
+      <Sidebar />
 
-      <div className="flex">
+      {/* RIGHT SIDE MAIN CONTENT */}
+      <div className="flex-1 p-4">
+        <Header />
 
-        <Sidebar />
+        <Routes>
+          {/* Home Page Route */}
+          <Route path="/" element={<HomePage />} />
 
-        {/* HOME PAGE */}
-        <div className="ml-60 p-6 w-full bg-gray-50 min-h-screen">
-
-          <h1 className="text-xl font-semibold mb-4">Home Page</h1>
-
-          <div className="grid 
-            grid-cols-1 
-            sm:grid-cols-2 
-            md:grid-cols-3 
-            lg:grid-cols-4 
-            gap-8">
-
-            {videos.map((video, index) => (
-              <VideoCard key={index} {...video} />
-            ))}
-
-          </div>
-
-        </div>
+          {/* Video Page Route (id = video index) */}
+          <Route path="/video/:id" element={<VideoPage />} />
+        </Routes>
       </div>
     </div>
   );
