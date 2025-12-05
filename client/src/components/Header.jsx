@@ -1,52 +1,40 @@
 // Header.jsx
-// This component shows the top navigation bar (YouTube style)
+// This component stays at the top and contains the search bar
 
 import React from "react";
-import { BsSearch, BsMicFill } from "react-icons/bs";
-import { FaBars } from "react-icons/fa";
-import { FaBell } from "react-icons/fa";
-import { FaUserCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
-    <div className="w-full flex items-center justify-between px-4 py-3 border-b bg-white">
+    // Header bar
+    <div className="h-16 bg-white border-b px-6 flex items-center justify-between">
 
-      {/* LEFT SIDE → Menu Icon + YouTube Logo */}
-      <div className="flex items-center gap-4">
-        {/* Hamburger menu */}
-        <FaBars className="text-xl cursor-pointer" />
+      {/* Left: YouTube logo */}
+      <Link to="/" className="flex items-center gap-2">
+        <img
+          src="https://www.edigitalagency.com.au/wp-content/uploads/Youtube-logo-png.png"
+          alt="logo"
+          className="h-6"
+        />
+        <h1 className="font-semibold text-lg">YouTube Clone</h1>
+      </Link>
 
-        {/* YouTube Logo + Text */}
-        <div className="flex items-center gap-1 cursor-pointer">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg"
-            alt="logo"
-            className="h-5"
-          />
-          <span className="text-xl font-semibold">YouTube Clone</span>
-        </div>
-      </div>
-
-      {/* CENTER → Search Box */}
-      <div className="flex items-center w-1/2">
+      {/* Center: Search bar */}
+      <div className="flex items-center w-1/3">
         <input
           type="text"
-          placeholder="Search"
-          className="w-full border px-3 py-2 rounded-l-full outline-none"
+          placeholder="Search videos..."
+          className="flex-1 border px-3 py-2 rounded-l-full outline-none"
         />
-        <button className="px-5 py-2 border border-l-0 rounded-r-full bg-gray-100">
-          <BsSearch className="text-lg" />
+        <button className="border px-4 py-2 rounded-r-full bg-gray-100">
+          🔍
         </button>
-
-        {/* Mic icon */}
-        <BsMicFill className="ml-3 text-xl cursor-pointer" />
       </div>
 
-      {/* RIGHT SIDE → Icons */}
-      <div className="flex items-center gap-5 text-xl cursor-pointer">
-        <FaBell />
-        <FaUserCircle />
-      </div>
+      {/* Right side small icon */}
+      <button className="border px-3 py-1 rounded-full bg-blue-500 text-white">
+        Sign In
+      </button>
     </div>
   );
 }
