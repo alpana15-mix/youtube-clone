@@ -1,20 +1,29 @@
-// src/components/VideoCard.jsx
+// VideoCard.jsx
+// Shows a single video thumbnail on homepage
+
 import React from "react";
 import { Link } from "react-router-dom";
 
-// video: object, id: index used in link
-export default function VideoCard({ video, id }) {
-  if (!video) {
-    // Prevent crash when an item is missing
-    return <div className="p-4 text-red-600">Missing video</div>;
-  }
+export default function VideoCard({ video, index }) {
 
   return (
-    <Link to={`/video/${id}`}>
-      <div className="cursor-pointer">
-        <img src={video.thumbnail} alt={video.title} className="w-full h-44 object-cover rounded-lg" />
-        <h4 className="mt-2 font-semibold">{video.title}</h4>
-        <p className="text-xs text-gray-500">{video.channel} • {video.views}</p>
+    <Link to={`/video/${index}`}>
+      <div className="shadow rounded-lg overflow-hidden hover:scale-[1.02] transition cursor-pointer">
+
+        {/* Thumbnail */}
+        <img 
+          src={video.thumbnail} 
+          alt={video.title} 
+          className="w-full h-48 object-cover"
+        />
+
+        {/* Video Details */}
+        <div className="p-2">
+          <h3 className="font-semibold">{video.title}</h3>
+          <p className="text-sm text-gray-600">{video.channel}</p>
+          <p className="text-xs text-gray-500">{video.views} views • {video.time}</p>
+        </div>
+
       </div>
     </Link>
   );

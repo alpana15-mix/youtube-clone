@@ -1,39 +1,31 @@
 // App.jsx
-// This file controls page layout: Header (top), Sidebar (left), Content (right)
+// This file arranges Sidebar on left and Page Content on right.
 
-import React from "react";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import HomePage from "./pages/HomePage";
-import VideoPage from "./pages/VideoPage";
 import { Routes, Route } from "react-router-dom";
+import VideoPage from "./pages/VideoPage";
 
 export default function App() {
   return (
-    // Full screen height, page divided into header + main area
-    <div className="h-screen flex flex-col">
+    <div className="flex">
 
-      {/* Top Header */}
-      <Header />
+      {/* LEFT SIDE – Sidebar */}
+      <Sidebar />
 
-      {/* Main area below header */}
-      <div className="flex flex-1">
+      {/* RIGHT SIDE – Main Content Area */}
+      <div className="flex-1 p-4">
 
-        {/* Fixed Sidebar on left */}
-        <Sidebar />
+        {/* Header always stays at top */}
+        <Header />
 
-        {/* Scrollable page content on right */}
-        <div className="flex-1 p-4 overflow-y-auto">
+        {/* Pages will load here */}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/video/:id" element={<VideoPage />} />
+        </Routes>
 
-          <Routes>
-            {/* Home page content */}
-            <Route path="/" element={<HomePage />} />
-
-            {/* Video player page */}
-            <Route path="/video/:id" element={<VideoPage />} />
-          </Routes>
-
-        </div>
       </div>
     </div>
   );

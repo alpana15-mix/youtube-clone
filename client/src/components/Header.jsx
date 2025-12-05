@@ -1,38 +1,38 @@
 // Header.jsx
-// This component stays at the top and contains the search bar
+// This file displays the top bar + search bar like YouTube
 
-import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Header() {
-  return (
-    // Header bar
-    <div className="h-16 bg-white border-b px-6 flex items-center justify-between">
+  const [text, setText] = useState("");
 
-      {/* Left: YouTube logo */}
-      <Link to="/" className="flex items-center gap-2">
+  return (
+    <div className="flex items-center justify-between mb-4">
+
+      {/* Logo */}
+      <Link to="/" className="text-xl font-bold flex items-center gap-1">
         <img
-          src="https://www.edigitalagency.com.au/wp-content/uploads/Youtube-logo-png.png"
-          alt="logo"
-          className="h-6"
+          src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg"
+          alt="YouTube"
+          className="w-20"
         />
-        <h1 className="font-semibold text-lg">YouTube Clone</h1>
+        <span>YouTube Clone</span>
       </Link>
 
-      {/* Center: Search bar */}
-      <div className="flex items-center w-1/3">
+      {/* Search bar – only one */}
+      <div className="flex items-center gap-2 border rounded-full px-4 py-1 w-96">
         <input
           type="text"
+          className="flex-1 outline-none"
           placeholder="Search videos..."
-          className="flex-1 border px-3 py-2 rounded-l-full outline-none"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
         />
-        <button className="border px-4 py-2 rounded-r-full bg-gray-100">
-          🔍
-        </button>
       </div>
 
-      {/* Right side small icon */}
-      <button className="border px-3 py-1 rounded-full bg-blue-500 text-white">
+      {/* Sign in button */}
+      <button className="px-4 py-1 bg-blue-500 text-white rounded-full">
         Sign In
       </button>
     </div>
