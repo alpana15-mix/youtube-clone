@@ -1,32 +1,34 @@
 // App.jsx
-// This file arranges Sidebar on left and Page Content on right.
 
+import { useState } from "react";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import HomePage from "./pages/HomePage";
-import { Routes, Route } from "react-router-dom";
 import VideoPage from "./pages/VideoPage";
+import { Routes, Route } from "react-router-dom";
 
 export default function App() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
   return (
-    <div className="flex">
+    <div className="">
 
-      {/* LEFT SIDE – Sidebar */}
-      <Sidebar />
+      {/* Header stays on top */}
+      <Header toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
 
-      {/* RIGHT SIDE – Main Content Area */}
-      <div className="flex-1 p-4">
+      {/* Below Header → Sidebar + Main Content */}
+      <div className="flex">
+        <Sidebar isOpen={isSidebarOpen} />
 
-        {/* Header always stays at top */}
-        <Header />
-
-        {/* Pages will load here */}
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/video/:id" element={<VideoPage />} />
-        </Routes>
-
+        {/* MAIN AREA */}
+        <div className="flex-1 p-4">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/video/:id" element={<VideoPage />} />
+          </Routes>
+        </div>
       </div>
+
     </div>
   );
 }
