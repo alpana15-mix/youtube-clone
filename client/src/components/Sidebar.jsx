@@ -1,30 +1,75 @@
 // Sidebar.jsx
-// This is the left menu (Home, Shorts, Subscriptions, Explore etc.)
+// This file shows sidebar in two modes: FULL mode & COLLAPSED mode
 
 import { Link } from "react-router-dom";
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen }) {
   return (
-    <div className="w-48 border-r h-screen p-4 text-sm">
+    // Sidebar width changes based on isOpen
+    <div
+      className={`border-r h-screen p-4 transition-all duration-300
+      ${isOpen ? "w-48" : "w-16"}`}
+    >
 
-      {/* Top Menu */}
+      {/* MAIN MENU */}
       <div className="mb-4">
-        <Link to="/" className="block py-2">Home</Link>
-        <div className="py-2">Shorts</div>
-        <div className="py-2">Subscriptions</div>
+
+        {/* Each item shows icon always, text only in open mode */}
+
+        <Link to="/" className="flex items-center gap-3 py-2">
+          <span>🏠</span>
+          {isOpen && <span>Home</span>}
+        </Link>
+
+        <div className="flex items-center gap-3 py-2">
+          <span>🎬</span>
+          {isOpen && <span>Shorts</span>}
+        </div>
+
+        <div className="flex items-center gap-3 py-2">
+          <span>📺</span>
+          {isOpen && <span>Subscriptions</span>}
+        </div>
+
       </div>
 
       <hr />
 
-      {/* Explore Section */}
+      {/* EXPLORE */}
       <div className="mt-4">
-        <p className="font-bold text-gray-600">Explore</p>
-        <div className="py-2">Trending</div>
-        <div className="py-2">Shopping</div>
-        <div className="py-2">Music</div>
-        <div className="py-2">Movies</div>
-        <div className="py-2">Gaming</div>
-        <div className="py-2">News</div>
+
+        {isOpen && <p className="font-bold text-gray-600">Explore</p>}
+
+        <div className="flex items-center gap-3 py-2">
+          <span>🔥</span>
+          {isOpen && <span>Trending</span>}
+        </div>
+
+        <div className="flex items-center gap-3 py-2">
+          <span>🛍️</span>
+          {isOpen && <span>Shopping</span>}
+        </div>
+
+        <div className="flex items-center gap-3 py-2">
+          <span>🎵</span>
+          {isOpen && <span>Music</span>}
+        </div>
+
+        <div className="flex items-center gap-3 py-2">
+          <span>🎥</span>
+          {isOpen && <span>Movies</span>}
+        </div>
+
+        <div className="flex items-center gap-3 py-2">
+          <span>🎮</span>
+          {isOpen && <span>Gaming</span>}
+        </div>
+
+        <div className="flex items-center gap-3 py-2">
+          <span>📰</span>
+          {isOpen && <span>News</span>}
+        </div>
+
       </div>
     </div>
   );
