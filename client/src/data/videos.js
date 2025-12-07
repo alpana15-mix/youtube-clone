@@ -1,5 +1,6 @@
 export const videos = [
   {
+    id: 1,
     thumbnail: "https://i.ytimg.com/vi/3fumBcKC6RE/hqdefault.jpg",
     title: "Amazing React Tutorial",
     channel: "Code Academy",
@@ -9,6 +10,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/embed/3fumBcKC6RE"
   },
   {
+    id: 2,
     thumbnail: "https://i.ytimg.com/vi/LXb3EKWsInQ/hqdefault.jpg",
     title: "Travel Vlog - Costa Rica",
     channel: "Wanderers",
@@ -18,6 +20,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/embed/LXb3EKWsInQ"
   },
   {
+    id: 3,
     thumbnail: "https://i.ytimg.com/vi/ScMzIvxBSi4/hqdefault.jpg",
     title: "Best Coding Playlist",
     channel: "Coding Beats",
@@ -27,6 +30,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/embed/ScMzIvxBSi4"
   },
   {
+    id: 4,
     thumbnail: "https://i.ytimg.com/vi/ysz5S6PUM-U/hqdefault.jpg",
     title: "Relaxing Nature Sounds",
     channel: "Nature Live",
@@ -36,6 +40,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/embed/ysz5S6PUM-U"
   },
   {
+    id: 5,
     thumbnail: "https://i.ytimg.com/vi/aqz-KE-bpKQ/hqdefault.jpg",
     title: "Ocean Waves 4K Screensaver",
     channel: "Ocean TV",
@@ -45,6 +50,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/embed/aqz-KE-bpKQ"
   },
   {
+    id: 6,
     thumbnail: "https://i.ytimg.com/vi/6Dh-RL__uN4/hqdefault.jpg",
     title: "JavaScript Full Course",
     channel: "Tech Master",
@@ -54,6 +60,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/embed/6Dh-RL__uN4"
   },
   {
+    id: 7,
     thumbnail: "https://i.ytimg.com/vi/ktvTqknDobU/hqdefault.jpg",
     title: "Imagine Dragons - Believer",
     channel: "Music World",
@@ -63,6 +70,7 @@ export const videos = [
     videoUrl: "https://www.youtube.com/embed/ktvTqknDobU"
   },
   {
+    id: 8,
     thumbnail: "https://i.ytimg.com/vi/J---aiyznGQ/hqdefault.jpg",
     title: "Cat Funny Moments",
     channel: "Animal Planet",

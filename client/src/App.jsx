@@ -7,6 +7,7 @@ import CategoryBar from "./components/CategoryBar";
 
 import HomePage from "./pages/HomePage";
 import VideoPage from "./pages/VideoPage";
+import Watch from "./pages/Watch";
 
 export default function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -31,7 +32,8 @@ export default function App() {
       </div>
 
       {/* MAIN CONTENT AREA (Navbar + Videos) */}
-      <div
+      
+       <div
         className={`pt-[60px] transition-all ${
           isSidebarOpen ? "ml-[250px]" : "ml-[120px]"
         } w-full`}
@@ -46,7 +48,7 @@ export default function App() {
         {/* Pages */}
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/video/:id" element={<VideoPage />} />
+          <Route path="/video/:id" element={<Watch />} />
         </Routes>
       </div>
     </div>

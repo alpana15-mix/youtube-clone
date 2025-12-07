@@ -1,30 +1,26 @@
-// VideoCard.jsx
-// Shows a single video thumbnail on homepage
-
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export default function VideoCard({ video, index }) {
+export default function VideoCard({ video }) {
+  const navigate = useNavigate();
 
   return (
-    <Link to={`/video/${index}`}>
-      <div className="shadow rounded-lg overflow-hidden hover:scale-[1.02] transition cursor-pointer">
+    <div
+      onClick={() => navigate(`/video/${video.id}`)}   // ✅ CORRECT ID
+      className="shadow rounded-lg overflow-hidden hover:scale-105 transition cursor-pointer"
+    >
+      {/* Thumbnail */}
+      <img
+        src={video.thumbnail}
+        alt={video.title}
+        className="w-full h-48 object-cover"
+      />
 
-        {/* Thumbnail */}
-        <img 
-          src={video.thumbnail} 
-          alt={video.title} 
-          className="w-full h-48 object-cover"
-        />
-
-        {/* Video Details */}
-        <div className="p-2">
-          <h3 className="font-semibold">{video.title}</h3>
-          <p className="text-sm text-gray-600">{video.channel}</p>
-          <p className="text-xs text-gray-500">{video.views} views • {video.time}</p>
-        </div>
-
+      {/* Details */}
+      <div className="p-3">
+        <h3 className="font-bold text-sm">{video.title}</h3>
+        <p className="text-gray-500 text-xs">{video.views} • {video.time}</p>
       </div>
-    </Link>
+    </div>
   );
 }
